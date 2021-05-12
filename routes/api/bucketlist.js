@@ -8,11 +8,10 @@ router.get('/', async(req,res)=>{
     const bucketListItems= await BucketListItem.find()
 
     if(!bucketListItems) throw new Error('No bucketListItems')
-    const sorted= bucketListItems.sort((a,b)=>{
-        return new Date(a.date).getTime()
-    })
+    
 
-    res.status(200).json(sorted)}
+    res.status(200).json(bucketListItems)
+}
     catch(error) {
         res.status(500).json({message:error.message})
     }
